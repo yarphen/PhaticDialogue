@@ -1,5 +1,9 @@
 package com.fishteam.trollbot;
 
+/**
+ * ReplyDictionary must find all the masks pairs
+ * those matches the customer's phrase 
+ */
 public interface ReplyDictionary {
-	Iterable<RequestMask> findMasks(String phrase);
+	Iterable<MaskPair> findMasks(String phrase);
 }
