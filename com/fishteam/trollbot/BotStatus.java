@@ -13,30 +13,30 @@ public class BotStatus {
 	
 	public BotStatus(double initialMood) {
 		mood = initialMood;
-		if mood<0.5			mood=1.0;
-		if mood>4.0			mood=4.0;
+		if (mood<0.5)			mood=1.0;
+		if (mood>4.0)			mood=4.0;
 	}
 	
 	/** Reaction to friendly user input */
 	public void answerPoliteResponse() {
-		if mood>=0.5 && mood<=3.5	mood+=0.5;
-		else if mood<0.5			mood=1.0;
-		else if mood>4.0			mood=4.0;
+		if (mood>=0.5 && mood<=3.5)	mood+=0.5;
+		else if (mood<0.5)			mood=1.0;
+		else if (mood>4.0)			mood=4.0;
 	}
 	
 	/** Reaction to rude user input */
 	public void answerImpoliteResponse() {
-		if mood>=1.0 && mood<=4.0	mood-=0.5;
-		else if mood<0.5			mood=0.5;
-		else if mood>4.0			mood=3.5;
+		if (mood>=1.0 && mood<=4.0)	mood-=0.5;
+		else if (mood<0.5)			mood=0.5;
+		else if (mood>4.0)			mood=3.5;
 	}
 	
 	/** Reaction to extremely innapropriate user input, 
 	*	i.e. heavy swearing, calling your mom fat etc. */
 	public void answerOffensiveResponse() {
-		if mood>=1.5 && mood<=4.0	mood-=1.0;
-		else if mood<1.5			mood=0.5;
-		else if mood>4.0			mood=3.0;
+		if (mood>=1.5 && mood<=4.0)	mood-=1.0;
+		else if (mood<1.5)			mood=0.5;
+		else if (mood>4.0)			mood=3.0;
 	}
 	
 	/** Writes moods and their numerical values to the console */
