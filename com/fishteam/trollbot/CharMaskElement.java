@@ -7,6 +7,9 @@ import com.fishteam.trollbot.interfaces.EvalMaskElement;
 
 public class CharMaskElement implements EvalMaskElement{
 	private char character;
+	public CharMaskElement(char c) {
+		setCharacter(c);
+	}
 	@Override
 	public boolean match(List<CharMaskElement> chars) {
 		return chars.size()==1&&chars.get(0).getCharacter()==character;
