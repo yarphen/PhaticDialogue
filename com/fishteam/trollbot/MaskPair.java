@@ -1,10 +1,13 @@
 package com.fishteam.trollbot;
+
 /**
  * Pair of masks 
  */
 public class MaskPair {
 	private ReplyMask replyMask;
 	private RequestMask requestMask;
+	private double mood;
+	
 	public ReplyMask getReplyMask() {
 		return replyMask;
 	}
@@ -16,5 +19,11 @@ public class MaskPair {
 	}
 	public void setRequestMask(RequestMask requestMask) {
 		this.requestMask = requestMask;
+	}
+	public double getMood() {
+		return mood;
+	}
+	public void setMood(double mood) {
+		this.mood = mood;
 	}
 }
