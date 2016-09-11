@@ -1,5 +1,7 @@
 package com.fishteam.trollbot;
 
+import java.lang.*;
+
 /** Used to monitore Trollbot's mood.
 *	The current mood is used to determine how friendly
 *	or neutral Trollbot's response to the user is.
@@ -8,7 +10,7 @@ package com.fishteam.trollbot;
 */
 public class BotStatus {
 	
-	/** Trollbot's current disposition.  */
+	/** Trollbot's current disposition */
 	private double mood;
 	
 	public BotStatus(double initialMood) {
@@ -17,26 +19,33 @@ public class BotStatus {
 		if (mood>4.0)			mood=4.0;
 	}
 	
-	/** Reaction to friendly user input */
-	public void answerPoliteResponse() {
-		if (mood>=0.5 && mood<=3.5)	mood+=0.5;
-		else if (mood<0.5)			mood=1.0;
-		else if (mood>4.0)			mood=4.0;
-	}
-	
-	/** Reaction to rude user input */
-	public void answerImpoliteResponse() {
-		if (mood>=1.0 && mood<=4.0)	mood-=0.5;
-		else if (mood<0.5)			mood=0.5;
-		else if (mood>4.0)			mood=3.5;
-	}
-	
-	/** Reaction to extremely innapropriate user input, 
-	*	i.e. heavy swearing, calling your mom fat etc. */
-	public void answerOffensiveResponse() {
-		if (mood>=1.5 && mood<=4.0)	mood-=1.0;
-		else if (mood<1.5)			mood=0.5;
-		else if (mood>4.0)			mood=3.0;
+	/** Reaction to user input. Trollbot's mood will change */
+	public void react(double userMood) {
+		if (userMood==mood)	return;
+		
+		// Trollbot's mood changes by the absolute value of the differense between it's and user's mood
+		double diff = Math.abs(mood-userMood);
+		
+		if (userMood>mood) {
+			// Positive responses always cheer Trollbot up
+			if (userMood>2.0) {
+				mood+=diff;
+			}
+			// Negative responses worsen Trollbot's mood unless it can't get any worse at this point
+			else {
+				if ((mood-diff)<=0.5) 	mood=0.5; //the bot's mood can't get any worse than 0,5
+				else					mood-=diff;
+			}
+		}
+		else {
+			if (userMood>2.0) {
+				if ((mood+diff)>=4.0) 	mood=4.0; //the bot's mood can't get any better than 4,0
+				else					mood+=diff;
+			}	
+			else {
+				mood-=diff;
+			}
+		}
 	}
 	
 	/** Writes moods and their numerical values to the console */
