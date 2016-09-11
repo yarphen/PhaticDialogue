@@ -11,6 +11,9 @@ import com.fishteam.trollbot.interfaces.MaskElement;
 public class MemoryMaskElement implements EvalMaskElement{
 	private String fieldName;
 	private Map<String, String> memoryMap;
+	public MemoryMaskElement(String fieldName, Map<String, String> map) {
+		this.fieldName=fieldName;
+	}
 	@Override
 	public boolean match(List<CharMaskElement> maskElements) {
 		memoryMap.put(fieldName, Utils.eval(maskElements));

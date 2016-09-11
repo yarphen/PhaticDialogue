@@ -12,6 +12,9 @@ import com.fishteam.trollbot.interfaces.MaskElement;
 public class RememberMaskElement implements EvalMaskElement{
 	private int index;
 	private String content;
+	public RememberMaskElement(int i) {
+		index=i;
+	}
 	@Override
 	public boolean match(List<CharMaskElement> maskElements) {
 		content=Utils.eval(maskElements);
