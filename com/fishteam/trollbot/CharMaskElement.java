@@ -2,6 +2,8 @@ package com.fishteam.trollbot;
 
 import java.util.List;
 
+import com.fishteam.trollbot.interfaces.EvalMaskElement;
+
 
 public class CharMaskElement implements EvalMaskElement{
 	private char character;

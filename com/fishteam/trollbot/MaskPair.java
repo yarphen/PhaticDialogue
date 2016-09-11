@@ -1,5 +1,8 @@
 package com.fishteam.trollbot;
 
+import com.fishteam.trollbot.interfaces.ReplyMask;
+import com.fishteam.trollbot.interfaces.RequestMask;
+
 /**
  * Pair of masks 
  */

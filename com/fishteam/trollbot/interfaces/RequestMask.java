@@ -1,4 +1,4 @@
-package com.fishteam.trollbot;
+package com.fishteam.trollbot.interfaces;
 /**
  * This mask is purposed to match
  * some phrase and return as

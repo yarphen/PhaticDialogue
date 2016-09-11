@@ -1,4 +1,6 @@
-package com.fishteam.trollbot;
+package com.fishteam.trollbot.interfaces;
+
+import com.fishteam.trollbot.MaskPair;
 
 /**
  * ReplyDictionary must find all the masks pairs

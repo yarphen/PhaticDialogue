@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fishteam.trollbot.interfaces.EvalMaskElement;
+
 public class Utils {
 	public static String eval(List<? extends EvalMaskElement> masks){
 		return masks.stream().sequential().collect(

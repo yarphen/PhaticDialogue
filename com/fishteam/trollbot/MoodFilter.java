@@ -1,5 +1,7 @@
 package com.fishteam.trollbot;
 
+import com.fishteam.trollbot.interfaces.ReplyFilter;
+
 public class MoodFilter implements ReplyFilter {
 	
 	/** Iterates over all fitting reply masks and picks

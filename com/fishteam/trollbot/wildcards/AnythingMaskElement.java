@@ -5,7 +5,7 @@ import java.util.List;
 import javax.naming.OperationNotSupportedException;
 
 import com.fishteam.trollbot.CharMaskElement;
-import com.fishteam.trollbot.MaskElement;
+import com.fishteam.trollbot.interfaces.MaskElement;
 
 public class AnythingMaskElement implements MaskElement{
 

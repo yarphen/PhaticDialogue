@@ -2,6 +2,9 @@ package com.fishteam.trollbot;
 
 import java.util.List;
 
+import com.fishteam.trollbot.interfaces.MaskElement;
+import com.fishteam.trollbot.interfaces.ReplyDictionary;
+
 public class TreeDictionary implements ReplyDictionary {
 
 	@Override

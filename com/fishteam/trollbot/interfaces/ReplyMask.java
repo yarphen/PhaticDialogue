@@ -1,4 +1,4 @@
-package com.fishteam.trollbot;
+package com.fishteam.trollbot.interfaces;
 
 /**
  * This is a mask purposed to fill it

@@ -1,4 +1,4 @@
-package com.fishteam.trollbot;
+package com.fishteam.trollbot.interfaces;
 
 /**
  * Now this is not yet filled interface

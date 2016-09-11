@@ -1,4 +1,4 @@
-package com.fishteam.trollbot;
+package com.fishteam.trollbot.interfaces;
 /**
  * Some abstract bot that can reply
  */

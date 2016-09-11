@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.fishteam.trollbot.CharMaskElement;
-import com.fishteam.trollbot.EvalMaskElement;
-import com.fishteam.trollbot.MaskElement;
 import com.fishteam.trollbot.Utils;
+import com.fishteam.trollbot.interfaces.EvalMaskElement;
+import com.fishteam.trollbot.interfaces.MaskElement;
 
 public class MemoryMaskElement implements EvalMaskElement{
 	private String fieldName;

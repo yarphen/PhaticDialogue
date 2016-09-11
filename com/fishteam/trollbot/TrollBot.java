@@ -1,5 +1,10 @@
 package com.fishteam.trollbot;
 
+import com.fishteam.trollbot.interfaces.Bot;
+import com.fishteam.trollbot.interfaces.Matches;
+import com.fishteam.trollbot.interfaces.ReplyDictionary;
+import com.fishteam.trollbot.interfaces.ReplyFilter;
+
 /**
  * TrollBot is the only implementation
  * of Bot interface in our program.
