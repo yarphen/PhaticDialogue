@@ -8,4 +8,5 @@ import com.fishteam.trollbot.MaskPair;
  */
 public interface ReplyDictionary {
 	Iterable<MaskPair> findMasks(String phrase);
+	void addMask(MaskPair pair);
 }
