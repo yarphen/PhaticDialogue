@@ -32,7 +32,7 @@ public class BotStatus {
 				mood+=diff;
 			// Negative responses worsen Trollbot's mood unless it can't get any worse at this point
 			else
-				mood = nomalize(mood-diff);
+				mood = normalize(mood-diff);
 		}
 		else {
 			if (userMood>2.0)
@@ -44,8 +44,8 @@ public class BotStatus {
 	
 	/** Normalizes mood so that it fits the 0,5-4,0 scale */
 	private static double normalize(double aMood) {
-		if (aMood>4.0) 	mood=4.0; //the bot's mood can't get any better than 4,0
-		if (aMood<0.5) 	mood=0.5; //the bot's mood can't get any worse than 0,5
+		if (aMood>4.0) 	aMood=4.0; //the bot's mood can't get any better than 4,0
+		if (aMood<0.5) 	aMood=0.5; //the bot's mood can't get any worse than 0,5
 		return aMood;
 	}
 	
