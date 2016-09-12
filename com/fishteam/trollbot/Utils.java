@@ -102,9 +102,4 @@ public class Utils {
 		}
 		return fragmentObject;
 	}
-	public static void main(String[] args) {
-		String masks = "[*] - що завгодно від порожнього рядка до купи сліd [?] - одне слово[1], [2], [3] remember-пропус{name} - маска з внесенням в пам'ять";
-		Object o = constructMask(masks);
-		System.out.println(o);
-	}
 }

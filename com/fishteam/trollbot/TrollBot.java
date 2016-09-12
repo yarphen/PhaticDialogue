@@ -27,6 +27,15 @@ public class TrollBot implements Bot {
 	 * answer to the customer's phrase
 	 */
 	private ReplyFilter filter;
+	
+	public TrollBot(BotStatus status, ReplyDictionary dictionary,
+			ReplyFilter filter) {
+		super();
+		this.status = status;
+		this.dictionary = dictionary;
+		this.filter = filter;
+	}
+
 	@Override
 	public String reply(String phrase) {
 		Iterable<MaskPair> pairs = dictionary.findMasks(phrase);
