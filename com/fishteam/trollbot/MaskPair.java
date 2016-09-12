@@ -1,5 +1,7 @@
 package com.fishteam.trollbot;
 
+import org.json.simple.JSONObject;
+
 import com.fishteam.trollbot.interfaces.ReplyMask;
 import com.fishteam.trollbot.interfaces.RequestMask;
 
@@ -10,6 +12,16 @@ public class MaskPair {
 	private ReplyMask replyMask;
 	private RequestMask requestMask;
 	private double mood;
+	
+	public MaskPair(JSONObject elem) {
+		String reqMask = (String) elem.get("request");
+		String replyMask = (String) elem.get("reply");
+		double mood = ((Number)elem.get("mood")).doubleValue();
+		this.mood = mood;
+		this.requestMask = new RequestMaskImpl(Utils.constructReqMask(reqMask));
+		this.replyMask = new ReplyMaskImpl(Utils.constructReplyMask(replyMask));
+	}
+	public MaskPair() {}
 	
 	public ReplyMask getReplyMask() {
 		return replyMask;

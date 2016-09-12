@@ -10,6 +10,12 @@ import com.fishteam.trollbot.wildcards.RememberMaskElement;
 
 public class RequestMaskImpl implements RequestMask{
 	private List<MaskElement> sequence = new LinkedList<MaskElement>();
+	
+	public RequestMaskImpl(List<MaskElement> sequence) {
+		super();
+		this.sequence = sequence;
+	}
+
 	@Override
 	public Matches match(String string) {
 		TreeDictionary oneWordDictionary = new TreeDictionary();

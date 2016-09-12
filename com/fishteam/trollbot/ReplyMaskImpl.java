@@ -13,6 +13,12 @@ import com.fishteam.trollbot.wildcards.RememberMaskElement;
 
 public class ReplyMaskImpl implements ReplyMask {
 	private List<EvalMaskElement> sequence = new LinkedList<EvalMaskElement>();
+	
+	public ReplyMaskImpl(List<EvalMaskElement> sequence) {
+		super();
+		this.sequence = sequence;
+	}
+
 	@Override
 	public String process(Matches matches) {
 		Map<Integer, String> map = new HashMap<Integer, String>();

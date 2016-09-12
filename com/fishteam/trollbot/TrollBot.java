@@ -12,6 +12,7 @@ import com.fishteam.trollbot.interfaces.ReplyFilter;
  * of mask pairs, and filter for replies.
  */
 public class TrollBot implements Bot {
+	private static final String NO_PHRASE_FOUND = "Запитайте щось простіше, будь ласка.";
 	/**
 	 * Bot's status includes bot's state,
 	 * is expected to save something like mood 
@@ -27,7 +28,7 @@ public class TrollBot implements Bot {
 	 * answer to the customer's phrase
 	 */
 	private ReplyFilter filter;
-	
+
 	public TrollBot(BotStatus status, ReplyDictionary dictionary,
 			ReplyFilter filter) {
 		super();
@@ -40,8 +41,12 @@ public class TrollBot implements Bot {
 	public String reply(String phrase) {
 		Iterable<MaskPair> pairs = dictionary.findMasks(phrase);
 		MaskPair bestPair = filter.findBestMask(pairs, status);
-		Matches matches = bestPair.getRequestMask().match(phrase);
-		return bestPair.getReplyMask().process(matches);
+		if (bestPair!=null){
+			Matches matches = bestPair.getRequestMask().match(phrase);
+			return bestPair.getReplyMask().process(matches);
+		}else{
+			return NO_PHRASE_FOUND;
+		}
 	}
 
 }

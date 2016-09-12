@@ -108,6 +108,9 @@ public class TreeDictionary implements ReplyDictionary {
 			root.element = first;
 			roots.put(first, root);
 		}
+		if (list.size()==1){
+			root.pair = pair;
+		}
 		root.addMask(list.subList(1, list.size()));
 	}
 }

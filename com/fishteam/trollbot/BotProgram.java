@@ -15,7 +15,7 @@ public class BotProgram extends Thread{
 	}
 	@Override
 	public void run() {
-		System.out.println("Вас вітає TrollBot!");
+		System.out.println("Вас вітає TrollBot! Поговоримо?");
 		Scanner scanner = new Scanner(System.in);
 		Random random = new Random();
 		while(true){
