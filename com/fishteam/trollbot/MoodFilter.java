@@ -11,7 +11,7 @@ public class MoodFilter implements ReplyFilter {
 		double botMood = status.getMood();
 		double maskMood = 0;
 		double currentDiff = 0;
-		double bestDiff = 0;
+		double bestDiff = 100;
 		MaskPair bestPair = null;
 		
 		for (MaskPair pair : pairs)
