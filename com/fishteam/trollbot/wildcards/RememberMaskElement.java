@@ -54,4 +54,7 @@ public class RememberMaskElement implements EvalMaskElement{
 			return false;
 		return true;
 	}
+	public int getIndex() {
+		return index;
+	}
 }
