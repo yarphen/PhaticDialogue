@@ -40,9 +40,9 @@ public class TrollBot implements Bot {
 	@Override
 	public String reply(String phrase) {
 		Iterable<MaskPair> pairs = dictionary.findMasks(phrase);
+		status.react(Math.random()*3.5+0.5);
 		MaskPair bestPair = filter.findBestMask(pairs, status);
 		if (bestPair!=null){
-			status.react(bestPair.getMood());
 			Matches matches = bestPair.getRequestMask().match(phrase);
 			return bestPair.getReplyMask().process(matches);
 		}else{
