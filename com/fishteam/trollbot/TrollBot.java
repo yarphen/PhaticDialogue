@@ -50,4 +50,9 @@ public class TrollBot implements Bot {
 		}
 	}
 
+	@Override
+	public boolean isDead() {
+		return status.getMood()<=0.55;
+	}
+
 }

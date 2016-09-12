@@ -4,4 +4,5 @@ package com.fishteam.trollbot.interfaces;
  */
 public interface Bot {
 	String reply(String phrase);
+	boolean isDead();
 }
