@@ -42,6 +42,7 @@ public class TrollBot implements Bot {
 		Iterable<MaskPair> pairs = dictionary.findMasks(phrase);
 		MaskPair bestPair = filter.findBestMask(pairs, status);
 		if (bestPair!=null){
+			status.react(bestPair.getMood());
 			Matches matches = bestPair.getRequestMask().match(phrase);
 			return bestPair.getReplyMask().process(matches);
 		}else{

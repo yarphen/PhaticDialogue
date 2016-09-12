@@ -27,11 +27,11 @@ public class TreeDictionary implements ReplyDictionary {
 	private class TreeNode{
 		private MaskElement element;
 		private HashMap<MaskElement, TreeNode> children = new HashMap<>();
-		private MaskPair pair;
+		private List<MaskPair> pairs = new LinkedList<MaskPair>();
 		private Collection<MaskPair> findMasks(List<CharMaskElement> charList) {
 			List<MaskPair> pairs = new LinkedList<MaskPair>();
-			if (pair!=null&&element.match(charList)){
-				pairs.add(pair);
+			if (!this.pairs.isEmpty()&&element.match(charList)){
+				pairs.addAll(this.pairs);
 			}
 			List<List<CharMaskElement>> subLists = new LinkedList<List<CharMaskElement>>();
 			for(int i=0; i<=charList.size(); i++){
@@ -78,7 +78,7 @@ public class TreeDictionary implements ReplyDictionary {
 		private TreeDictionary getOuterType() {
 			return TreeDictionary.this;
 		}
-		public void addMask(List<MaskElement> subList) {
+		public void addMask(MaskPair pair, List<MaskElement> subList) {
 			//bad solution causes code duplication 
 			if (subList.isEmpty())return;
 			MaskElement first = subList.get(0);
@@ -90,7 +90,11 @@ public class TreeDictionary implements ReplyDictionary {
 				child.element = first;
 				children.put(first, child);
 			}
-			child.addMask(subList.subList(1, subList.size()));
+			if (subList.size()==1){
+				child.pairs.add(pair);
+			}else{
+				child.addMask(pair,subList.subList(1, subList.size()));
+			}
 		}
 
 	}
@@ -109,8 +113,9 @@ public class TreeDictionary implements ReplyDictionary {
 			roots.put(first, root);
 		}
 		if (list.size()==1){
-			root.pair = pair;
+			root.pairs.add(pair);
+		}else{
+			root.addMask(pair,list.subList(1, list.size()));
 		}
-		root.addMask(list.subList(1, list.size()));
 	}
 }
