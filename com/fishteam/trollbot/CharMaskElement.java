@@ -43,7 +43,7 @@ public class CharMaskElement implements EvalMaskElement{
 	}
 	@Override
 	public String toString() {
-		return ""+character;
+		return Character.toString(character);
 	}
 	@Override
 	public String eval() {

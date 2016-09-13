@@ -79,7 +79,7 @@ public class TreeDictionary implements ReplyDictionary {
 		private TreeDictionary getOuterType() {
 			return TreeDictionary.this;
 		}
-		public void addMask(MaskPair pair, List<MaskElement> subList) {
+		private void addMask(MaskPair pair, List<MaskElement> subList) {
 			//bad solution causes code duplication
 			if (subList.isEmpty())return;
 			MaskElement first = subList.get(0);

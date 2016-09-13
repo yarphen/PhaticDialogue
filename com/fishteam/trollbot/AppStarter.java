@@ -13,7 +13,7 @@ public class AppStarter {
 		ReplyDictionary dictionary = new TreeDictionary();
 		Map<String, String> memoryMap = new HashMap<String, String>();
 		Utils.createPairsDictionaryFromFile(new File(PATH), memoryMap)
-		.forEach(item->dictionary.addMask(item));
+		.forEach(dictionary::addMask);
 		BotProgram botProgram = new BotProgram(new TrollBot(new BotStatus(2.8), dictionary, new MoodFilter(),
 				/*caseSensitive*/ false));
 		botProgram.start();
