@@ -16,11 +16,11 @@ public class BotProgram extends Thread{
 	}
 	@Override
 	public void run() {
-		System.out.println("Вас вітає "+BOT_NAME+"! Поговоримо?");
+		System.out.println("Р’Р°СЃ РІС–С‚Р°С” "+BOT_NAME+"! РџРѕРіРѕРІРѕСЂРёРјРѕ?");
 		Scanner scanner = new Scanner(System.in);
 		Random random = new Random();
 		while(true){
-			System.out.print("Ви: ");
+			System.out.print("Р’Рё: ");
 			String phrase = scanner.nextLine();
 //			try {
 //				Thread.sleep(random.nextInt(MAX_SLEEP-MIN_SLEEP)+MIN_SLEEP);

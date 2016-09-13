@@ -10,7 +10,7 @@ import com.fishteam.trollbot.interfaces.EvalMaskElement;
 
 public class CharMaskElement implements EvalMaskElement{
 	private char character;
-	private static final String LETTERS = "abcdefghijklmnopqrstuvwxyzàáâã´äåº¸æçè³¿éêëìíîïğñòôóõö÷øùşÿüúû'";
+	private static final String LETTERS = "abcdefghijklmnopqrstuvwxyzĞ°Ğ±Ğ²Ğ³Ò‘Ğ´ĞµÑ”Ñ‘Ğ¶Ğ·Ğ¸Ñ–Ñ—Ğ¹ĞºĞ»Ğ¼Ğ½Ğ¾Ğ¿Ñ€ÑÑ‚Ñ„ÑƒÑ…Ñ†Ñ‡ÑˆÑ‰ÑÑÑŒÑŠÑ‹'";
 	private static final HashSet<Character> LETTERS_SET = new HashSet<Character>();
 	static{
 		char[]chars = LETTERS.toCharArray();

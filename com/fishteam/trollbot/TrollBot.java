@@ -12,7 +12,7 @@ import com.fishteam.trollbot.interfaces.ReplyFilter;
  * of mask pairs, and filter for replies.
  */
 public class TrollBot implements Bot {
-	private static final String NO_PHRASE_FOUND = "Запитайте щось простіше, будь ласка.";
+	private static final String NO_PHRASE_FOUND = "Р—Р°РїРёС‚Р°Р№С‚Рµ С‰РѕСЃСЊ РїСЂРѕСЃС‚С–С€Рµ, Р±СѓРґСЊ Р»Р°СЃРєР°.";
 	/**
 	 * Bot's status includes bot's state,
 	 * is expected to save something like mood 
