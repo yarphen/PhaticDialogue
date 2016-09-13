@@ -1,6 +1,8 @@
 package com.fishteam.trollbot;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.fishteam.trollbot.interfaces.ReplyDictionary;
 
@@ -9,7 +11,8 @@ public class AppStarter {
 
 	public static void main(String[] args) {
 		ReplyDictionary dictionary = new TreeDictionary();
-		Utils.readPairsDictionaryFromFile(new File(PATH))
+		Map<String, String> memoryMap = new HashMap<String, String>();
+		Utils.createPairsDictionaryFromFile(new File(PATH), memoryMap)
 		.forEach(item->dictionary.addMask(item));
 		BotProgram botProgram = new BotProgram(new TrollBot(new BotStatus(2.8), dictionary, new MoodFilter()));
 		botProgram.start();

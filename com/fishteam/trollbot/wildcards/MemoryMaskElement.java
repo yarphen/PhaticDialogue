@@ -13,6 +13,7 @@ public class MemoryMaskElement implements EvalMaskElement{
 	private Map<String, String> memoryMap;
 	public MemoryMaskElement(String fieldName, Map<String, String> map) {
 		this.fieldName=fieldName;
+		this.memoryMap = map;
 	}
 	@Override
 	public boolean match(List<CharMaskElement> maskElements) {

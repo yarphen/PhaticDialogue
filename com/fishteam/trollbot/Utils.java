@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -32,24 +33,24 @@ public class Utils {
 				(l1, l2)->l1.addAll(l2))
 				.stream().sequential().collect(Collectors.joining(""));
 	}
-	public static List<MaskElement> constructReqMask(String mask){
+	public static List<MaskElement> constructReqMask(String mask, Map<String, String> memoryMap){
 		List<String> list = exactSplit(mask, WILDCARDS);
 		List<MaskElement> maskObject = new LinkedList<MaskElement> ();
 		int index = 0;
 		for(String element:list){
 			boolean b = index%2==1;
-			maskObject.addAll(constructReqFragment(element, b));
+			maskObject.addAll(constructReqFragment(element, b, memoryMap));
 			index++;
 		}
 		return maskObject;
 	}
-	public static List<EvalMaskElement> constructReplyMask(String mask) {
+	public static List<EvalMaskElement> constructReplyMask(String mask, Map<String, String> memoryMap) {
 		List<String> list = exactSplit(mask, WILDCARDS);
 		List<EvalMaskElement> maskObject = new LinkedList<EvalMaskElement> ();
 		int index = 0;
 		for(String element:list){
 			boolean b = index%2==1;
-			maskObject.addAll(constructReplyFragment(element, b));
+			maskObject.addAll(constructReplyFragment(element, b, memoryMap));
 			index++;
 		}
 		return maskObject;
@@ -62,13 +63,13 @@ public class Utils {
 		}
 		return phraseObject;
 	}
-	public static List<MaskPair> readPairsDictionaryFromFile(File file){
+	public static List<MaskPair> createPairsDictionaryFromFile(File file, Map<String, String> memoryMap){
 		List<MaskPair> pairs = new LinkedList<MaskPair>();
 		try {
 			JSONArray json = (JSONArray) JSON_PARSER.parse(new FileReader(file));
 			for(Object o:json){
 				JSONObject elem = (JSONObject) o;
-				MaskPair pair = new MaskPair(elem);
+				MaskPair pair = new MaskPair(elem, memoryMap);
 				pairs.add(pair);
 			}
 		} catch (IOException | ParseException e) {
@@ -103,7 +104,7 @@ public class Utils {
 		}
 		return strings;
 	}
-	private static List<MaskElement> constructReqFragment(String fragment, boolean isWildcard){
+	private static List<MaskElement> constructReqFragment(String fragment, boolean isWildcard, Map<String, String> memoryMap){
 		List<MaskElement> fragmentObject = new LinkedList<MaskElement> ();
 		if (isWildcard){
 			switch (fragment) {
@@ -126,7 +127,7 @@ public class Utils {
 				fragmentObject.add(new RememberMaskElement(3));
 				break;
 			case "{name}":
-				fragmentObject.add(new MemoryMaskElement(fragment, new HashMap<String, String>()));
+				fragmentObject.add(new MemoryMaskElement("name", memoryMap));
 				break;
 			default:
 				throw new IllegalArgumentException();
@@ -136,7 +137,7 @@ public class Utils {
 		}
 		return fragmentObject;
 	}
-	private static List<EvalMaskElement> constructReplyFragment(String fragment, boolean isWildcard){
+	private static List<EvalMaskElement> constructReplyFragment(String fragment, boolean isWildcard, Map<String, String> memoryMap){
 		List<EvalMaskElement> fragmentObject = new LinkedList<EvalMaskElement> ();
 		if (isWildcard){
 			switch (fragment) {
@@ -153,7 +154,7 @@ public class Utils {
 				fragmentObject.add(new RememberMaskElement(3));
 				break;
 			case "{name}":
-				fragmentObject.add(new MemoryMaskElement(fragment, new HashMap<String, String>()));
+				fragmentObject.add(new MemoryMaskElement("name", memoryMap));
 				break;
 			default:
 				throw new IllegalArgumentException();
