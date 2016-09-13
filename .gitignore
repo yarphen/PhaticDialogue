@@ -1,0 +1,25 @@
+# Idea
+.idea/
+src/
+out/
+PhaticDialogue.iml
+
+
+# Eclipse
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.project
+
+
+# Local files
+*_local/
+*Local.java
