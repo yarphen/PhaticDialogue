@@ -7,6 +7,6 @@ import com.fishteam.trollbot.MaskPair;
  * those matches the customer's phrase 
  */
 public interface ReplyDictionary {
-	Iterable<MaskPair> findMasks(String phrase);
+	Iterable<MaskPair> findMasks(String phrase, boolean isCaseSensitive);
 	void addMask(MaskPair pair);
 }

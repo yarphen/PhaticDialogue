@@ -7,7 +7,7 @@ import com.fishteam.trollbot.interfaces.MaskElement;
 
 public class WordMaskElement implements MaskElement{
 	@Override
-	public boolean match(List<CharMaskElement> chars) {
+	public boolean match(List<CharMaskElement> chars, boolean isCaseSensitive) {
 		for(CharMaskElement maskElement:chars){
 			if(!maskElement.isLetter())return false;
 		}

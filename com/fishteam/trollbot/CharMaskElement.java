@@ -26,11 +26,14 @@ public class CharMaskElement implements EvalMaskElement{
 		setCharacter(c);
 	}
 	@Override
-	public boolean match(List<CharMaskElement> chars) {
-		return chars.size()==1&&chars.get(0).getCharacter()==character;
+	public boolean match(List<CharMaskElement> chars, boolean isCaseSensitive) {
+		if(!isCaseSensitive){
+			character = Character.toLowerCase(character);
+		}
+		return chars.size()==1&&chars.get(0).getCharacter(isCaseSensitive)==character;
 	}
-	public char getCharacter() {
-		return character;
+	public char getCharacter(boolean isCaseSensitive) {
+		return isCaseSensitive ? character: Character.toLowerCase(character);
 	}
 	public void setCharacter(char character) {
 		this.character = character;

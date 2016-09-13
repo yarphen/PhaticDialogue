@@ -12,15 +12,15 @@ import com.fishteam.trollbot.interfaces.ReplyDictionary;
 
 public class TreeDictionary implements ReplyDictionary {
 	/**
-	 * bad solution of problem that root element can't contain anything 
+	 * bad solution of problem that root element can't contain anything
 	 */
 	private HashMap<MaskElement, TreeNode> roots = new HashMap<MaskElement, TreeNode>();
 	@Override
-	public Iterable<MaskPair> findMasks(String phrase) {
+	public Iterable<MaskPair> findMasks(String phrase, boolean isCaseSensitive) {
 		List<CharMaskElement> charList = Utils.constructPhrase(phrase);
 		List<MaskPair> pairs = new LinkedList<MaskPair>();
 		roots.values().forEach(root->{
-			pairs.addAll(root.findMasks(charList));
+			pairs.addAll(root.findMasks(charList, isCaseSensitive));
 		});
 		return pairs;
 	}
@@ -28,22 +28,23 @@ public class TreeDictionary implements ReplyDictionary {
 		private MaskElement element;
 		private HashMap<MaskElement, TreeNode> children = new HashMap<>();
 		private List<MaskPair> pairs = new LinkedList<MaskPair>();
-		private Collection<MaskPair> findMasks(List<CharMaskElement> charList) {
+
+		private Collection<MaskPair> findMasks(List<CharMaskElement> charList, boolean isCaseSensitive) {
 			List<MaskPair> pairs = new LinkedList<MaskPair>();
-			if (!this.pairs.isEmpty()&&element.match(charList)){
+			if (!this.pairs.isEmpty()&&element.match(charList, isCaseSensitive)){
 				pairs.addAll(this.pairs);
 			}
 			List<List<CharMaskElement>> subLists = new LinkedList<List<CharMaskElement>>();
 			for(int i=0; i<=charList.size(); i++){
 				List<CharMaskElement> head = charList.subList(0, i);
-				if (element.match(head)){
+				if (element.match(head, isCaseSensitive)){
 					List<CharMaskElement> tail = charList.subList(i, charList.size());
 					subLists.add(tail);
 				}
 			}
 			children.values().forEach(root->{
 				subLists.forEach(tail->{
-					pairs.addAll(root.findMasks(tail));
+					pairs.addAll(root.findMasks(tail, isCaseSensitive));
 				});
 			});
 			return pairs;
@@ -79,7 +80,7 @@ public class TreeDictionary implements ReplyDictionary {
 			return TreeDictionary.this;
 		}
 		public void addMask(MaskPair pair, List<MaskElement> subList) {
-			//bad solution causes code duplication 
+			//bad solution causes code duplication
 			if (subList.isEmpty())return;
 			MaskElement first = subList.get(0);
 			TreeNode child;
@@ -100,7 +101,7 @@ public class TreeDictionary implements ReplyDictionary {
 	}
 	@Override
 	public void addMask(MaskPair pair) {
-		//bad solution causes code duplication 
+		//bad solution causes code duplication
 		List<MaskElement> list = pair.getRequestMask().getSequence();
 		if (list.isEmpty())return;
 		MaskElement first = list.get(0);

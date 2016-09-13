@@ -10,7 +10,7 @@ import com.fishteam.trollbot.interfaces.MaskElement;
 public class AnythingMaskElement implements MaskElement{
 
 	@Override
-	public boolean match(List<CharMaskElement> maskElements) {
+	public boolean match(List<CharMaskElement> maskElements, boolean isCaseSensitive) {
 		return true;
 	}
 	@Override

@@ -16,7 +16,7 @@ public class MemoryMaskElement implements EvalMaskElement{
 		this.memoryMap = map;
 	}
 	@Override
-	public boolean match(List<CharMaskElement> maskElements) {
+	public boolean match(List<CharMaskElement> maskElements, boolean isCaseSensitive) {
 		memoryMap.put(fieldName, Utils.eval(maskElements));
 		return true;
 	}

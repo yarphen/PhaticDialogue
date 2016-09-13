@@ -14,7 +14,8 @@ public class AppStarter {
 		Map<String, String> memoryMap = new HashMap<String, String>();
 		Utils.createPairsDictionaryFromFile(new File(PATH), memoryMap)
 		.forEach(item->dictionary.addMask(item));
-		BotProgram botProgram = new BotProgram(new TrollBot(new BotStatus(2.8), dictionary, new MoodFilter()));
+		BotProgram botProgram = new BotProgram(new TrollBot(new BotStatus(2.8), dictionary, new MoodFilter(),
+				/*caseSensitive*/ false));
 		botProgram.start();
 	}
 }

@@ -17,12 +17,12 @@ public class RequestMaskImpl implements RequestMask{
 	}
 
 	@Override
-	public Matches match(String string) {
+	public Matches match(String string, boolean isCaseSensitive) {
 		TreeDictionary oneWordDictionary = new TreeDictionary();
 		MaskPair pair = new MaskPair();
 		pair.setRequestMask(this);
 		oneWordDictionary.addMask(pair);
-		if (oneWordDictionary.findMasks(string).iterator().hasNext()){
+		if (oneWordDictionary.findMasks(string, isCaseSensitive).iterator().hasNext()){
 			Matches matches = new MatchesImpl();
 			for(MaskElement element:sequence){
 				if (element instanceof RememberMaskElement){

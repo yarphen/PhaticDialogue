@@ -28,22 +28,27 @@ public class TrollBot implements Bot {
 	 * answer to the customer's phrase
 	 */
 	private ReplyFilter filter;
+	/**
+	 * Wheaser bot understands different cases for words
+     */
+	private boolean caseSensitivePhrases;
 
 	public TrollBot(BotStatus status, ReplyDictionary dictionary,
-			ReplyFilter filter) {
+			ReplyFilter filter, boolean caseSensitivePhrases) {
 		super();
 		this.status = status;
 		this.dictionary = dictionary;
 		this.filter = filter;
+		this.caseSensitivePhrases = caseSensitivePhrases;
 	}
 
 	@Override
 	public String reply(String phrase) {
-		Iterable<MaskPair> pairs = dictionary.findMasks(phrase);
+		Iterable<MaskPair> pairs = dictionary.findMasks(phrase, this.caseSensitivePhrases);
 		status.react(Math.random()*3.5+0.5);
 		MaskPair bestPair = filter.findBestMask(pairs, status);
 		if (bestPair!=null){
-			Matches matches = bestPair.getRequestMask().match(phrase);
+			Matches matches = bestPair.getRequestMask().match(phrase, this.caseSensitivePhrases);
 			return bestPair.getReplyMask().process(matches);
 		}else{
 			return NO_PHRASE_FOUND;

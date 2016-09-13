@@ -9,6 +9,6 @@ import java.util.List;
  * words  
  */
 public interface RequestMask {
-	Matches match(String string);
+	Matches match(String string, boolean isCaseSensitive);
 	List<MaskElement> getSequence();
 }

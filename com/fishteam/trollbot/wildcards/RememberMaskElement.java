@@ -16,7 +16,7 @@ public class RememberMaskElement implements EvalMaskElement{
 		index=i;
 	}
 	@Override
-	public boolean match(List<CharMaskElement> maskElements) {
+	public boolean match(List<CharMaskElement> maskElements, boolean isCaseSensitive) {
 		content=Utils.eval(maskElements);
 		return true;
 	}
