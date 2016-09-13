@@ -1,8 +1,11 @@
 package com.fishteam.trollbot;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -26,6 +29,7 @@ import com.fishteam.trollbot.wildcards.WordMaskElement;
 public class Utils {
 	private static final String [] WILDCARDS = {"[*]", "[?]", "{name}", "[0]", "[1]", "[2]", "[3]"}; 
 	private static final JSONParser JSON_PARSER = new JSONParser();
+	private static final String ENCODING = "UTF-8";
 	public static String eval(List<? extends EvalMaskElement> masks){
 		return masks.stream().sequential().collect(
 				LinkedList<String>::new,
@@ -66,7 +70,7 @@ public class Utils {
 	public static List<MaskPair> createPairsDictionaryFromFile(File file, Map<String, String> memoryMap){
 		List<MaskPair> pairs = new LinkedList<MaskPair>();
 		try {
-			JSONArray json = (JSONArray) JSON_PARSER.parse(new FileReader(file));
+			JSONArray json = (JSONArray) JSON_PARSER.parse(new InputStreamReader(new FileInputStream(file), Charset.forName(ENCODING)));
 			for(Object o:json){
 				JSONObject elem = (JSONObject) o;
 				MaskPair pair = new MaskPair(elem, memoryMap);
